@@ -1,0 +1,89 @@
+spring:
+  application:
+    name: oauth-bff
+  messages:
+    basename: messages
+  profiles: 
+    active: DEV
+  main:
+    #allow-bean-definition-overriding: true
+    banner-mode: console
+  threads:
+    virtual:
+      enabled: true
+  lifecycle:
+    timeout-per-shutdown-phase: 60s
+  datasource:
+    jdbc-url: ${spring.datasource.url} # For hikari
+    hikari:
+      minimum-idle: 100
+      jdbc-url: ${spring.datasource.url} 
+    driver-class-name: org.postgresql.Driver
+  session:
+    jdbc:
+      table-name: spring_session
+#      cleanup-cron: 0 */3 * * * *
+    store-type: jdbc
+server:
+#  port: 9000
+  shutdown: graceful
+  error:
+    include-stacktrace: never
+    path: /error
+    whitelabel:
+      enabled: false
+  servlet:
+    session:
+      tracking-modes: cookie
+logging:
+  level:
+    root: INFO
+    '[org.springframework.web]': INFO
+    '[org.springframework.security]': debug
+    '[org.springframework.security.oauth2]': debug
+    '[in.thirumal]': debug
+  file:
+    path: logs
+    name: logs/oauth2-bff.log
+  logback: 
+    rollingpolicy: 
+      max-history: 10
+      max-file-size: 100MB
+      total-size-cap: 1GB
+---
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${random.int[1,999999]}
+    leaseRenewalIntervalInSeconds: 10
+    preferIpAddress: true
+    health-check-url-path: /actuator/health
+    metadata-map:
+      startup: ${random.int}    #needed to trigger info and endpoint update after restart
+      user:
+        name: "thirumal"
+        password: "thirumal"
+  client:
+    region: default
+    enabled: true
+    register-with-eureka: true
+    fetch-registry: true
+    registryFetchIntervalSeconds: 5
+#Actuator
+management:
+  endpoint:
+    shutdown:
+      access: read-only
+    restart: 
+      access: unrestricted
+    health:
+      show-details: ALWAYS
+  endpoints: 
+    web: 
+      exposure: 
+        include: '*'
+  health: 
+    mail:
+      enabled: false
+  info:
+    git:
+      mode: "full"

@@ -1,0 +1,14 @@
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/authorization
+    username: postgres
+    password: Thirumal
+server:
+  port: 9000
+
+eureka:
+  client:
+    enabled: false   # disable Eureka client for DEV profile
+    service-url:
+      defaultZone: http://thirumal:thirumal@127.0.0.1:8761/eureka/

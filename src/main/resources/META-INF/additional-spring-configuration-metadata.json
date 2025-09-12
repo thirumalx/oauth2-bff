@@ -1,0 +1,82 @@
+{"properties": [
+  {
+    "name": "spring.datasource.hikari.jdbc-url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.hikari.jdbc-url'"
+  },
+  {
+    "name": "spring.datasource.jdbc-url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.jdbc-url'"
+  },
+  {
+    "name": "spring.datasource.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-name'"
+  },
+  {
+    "name": "server.error.whitelabel.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'server.error.whitelabel.enabled'"
+  },
+  {
+    "name": "server.port",
+    "type": "java.lang.String",
+    "description": "A description for 'server.port'"
+  },
+  {
+    "name": "spring.datasource.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.password'"
+  },
+  {
+    "name": "spring.datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.username'"
+  },
+  {
+    "name": "spring.datasource.url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.url'"
+  },
+  {
+    "name": "server.servlet.session.tracking-modes",
+    "type": "java.lang.String",
+    "description": "A description for 'server.servlet.session.tracking-modes'"
+  },
+  {
+    "name": "server.error.include-stacktrace",
+    "type": "java.lang.String",
+    "description": "A description for 'server.error.include-stacktrace'"
+  },
+  {
+    "name": "server.error.path",
+    "type": "java.lang.String",
+    "description": "A description for 'server.error.path'"
+  },
+  {
+    "name": "server.shutdown",
+    "type": "java.lang.String",
+    "description": "A description for 'server.shutdown'"
+  },
+  {
+    "name": "management.health.mail.enabled",
+    "type": "java.lang.String",
+    "description": "A description for 'management.health.mail.enabled'"
+  },
+  {
+    "name": "spring.datasource.hikari.minimum-idle",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.hikari.minimum-idle'"
+  },
+  {
+    "name": "spring.session.jdbc.table-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.session.jdbc.table-name'"
+  },
+  {
+    "name": "spring.session.store-type",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.session.store-type'"
+  }
+]}
