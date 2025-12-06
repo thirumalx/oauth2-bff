@@ -1,7 +1,6 @@
 package com.thirumal.service;
 
 import java.net.URI;
-import java.time.Duration;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;

@@ -33,7 +33,7 @@ spring:
             client-id: bff-client
             client-secret: secret
             authorization-grant-type: authorization_code
-            redirect-uri: "http://127.0.0.1:8080/login/oauth2/code/{registrationId}"
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             scope: openid,profile
             client-name: bff-client-oidc
           bff-client-authorization-code:
@@ -41,7 +41,7 @@ spring:
             client-id: bff-client
             client-secret: secret
             authorization-grant-type: authorization_code
-            redirect-uri: "http://127.0.0.1:8080/authorized"
+            redirect-uri: "{baseUrl}/authorized"
             scope: message.read,message.write
             client-name: bff-client-authorization-code
         provider:
