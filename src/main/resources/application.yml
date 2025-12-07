@@ -31,24 +31,24 @@ spring:
           bff-client-oidc:
             provider: spring
             client-id: bff-client
-            client-secret: secret
+            client-secret: thirumal
             authorization-grant-type: authorization_code
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             scope: openid,profile
-            client-name: bff-client-oidc
+            client-name: BFF Client
           bff-client-authorization-code:
             provider: spring
             client-id: bff-client
-            client-secret: secret
+            client-secret: thirumal
             authorization-grant-type: authorization_code
             redirect-uri: "{baseUrl}/authorized"
             scope: message.read,message.write
-            client-name: bff-client-authorization-code
+            client-name: BFF Client
         provider:
           spring:
-          issuer-uri: http://localhost:9000
+            issuer-uri: http://localhost:9000
 server:
-#  port: 9000
+#  port: 2223
   shutdown: graceful
   error:
     include-stacktrace: never

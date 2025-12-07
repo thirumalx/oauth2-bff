@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import com.thirumal.service.AuthService;
+
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 @RequestMapping("/bff")
@@ -24,17 +27,26 @@ public class AuthController {
 	}
 
 	@GetMapping("/login")
-	public ResponseEntity<Void> login(@RequestParam(value = "redirect", required = false) String redirect) {
-		// Use the optional redirect as state (base64) so we can return after callback
-		String state = "";
-		if (redirect != null && !redirect.isBlank()) {
-			state = Base64.getUrlEncoder().encodeToString(redirect.getBytes(StandardCharsets.UTF_8));
-		}
-		String authorizeUrl = authService.buildAuthorizationUri(state);
-		HttpHeaders headers = new HttpHeaders();
-		headers.setLocation(URI.create(authorizeUrl));
-		return ResponseEntity.status(302).headers(headers).build();
+	public ResponseEntity<Void> login(
+	        @RequestParam(required = false) String redirect,
+	        HttpServletRequest request) {
+
+	    String state = (redirect != null) ?
+	            Base64.getUrlEncoder().encodeToString(redirect.getBytes(StandardCharsets.UTF_8)) : "";
+
+	    // Compute base URL dynamically
+	    String baseUrl = UriComponentsBuilder.fromUriString(request.getRequestURL().toString())
+	            .replacePath(null)
+	            .toUriString();
+
+	    String authorizeUrl = authService.buildAuthorizationUri(state, baseUrl);
+
+	    HttpHeaders headers = new HttpHeaders();
+	    headers.setLocation(URI.create(authorizeUrl));
+
+	    return ResponseEntity.status(302).headers(headers).build();
 	}
+
 
 //	@GetMapping("/callback")
 //	public ResponseEntity<Void> callback(@RequestParam("code") String code, @RequestParam(value = "state", required = false) String state) {
