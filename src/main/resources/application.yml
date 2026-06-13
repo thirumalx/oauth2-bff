@@ -22,6 +22,7 @@ spring:
   session:
     jdbc:
       table-name: spring_session
+      initialize-schema: always
 #      cleanup-cron: 0 */3 * * * *
     store-type: jdbc
   security:
